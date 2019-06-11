@@ -4,50 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Document</title>
 </head>
 <body>
-  <div id="image-grid"></div>
-  <script src="script.js" defer></script>
+  <div id="image-grid">
+  </div>
+  <script src="js/script.js" defer></script>
   <script>
     // Пользовательский код
 
-document.onreadystatechange = function() {
-    const r1 = new row(),
-          r2 = new row(),
-          r3 = new row(),
-          c1 = new column(),
-          c2 = new column();
+// document.onreadystatechange = function() {
+//     const r1 = new row(),
+//           r2 = new row(),
+//           r3 = new row(),
+//           c1 = new column(),
+//           c2 = new column();
           
-    r1.add(img('images/img10.jpg'))
-      .add(c1)
-      .add(img('images/img2.jpg'))
-      .add(c2);
+//     r1.add(img('images/img10.jpg'))
+//       .add(c1)
+//       .add(img('images/img2.jpg'))
+//       .add(c2);
 
-    r2.add(img('images/img9.jpg'))
-      .add(img('images/img5.jpg'));
+//     r2.add(img('images/img9.jpg'))
+//       .add(img('images/img5.jpg'));
 
-    r3.add(img('images/img6.jpg'))
-      .add(img('images/img8.jpg'));
+//     r3.add(img('images/img6.jpg'))
+//       .add(img('images/img8.jpg'));
       
-    c1.add(img('images/img3.jpg'))
-      .add(r2);
+//     c1.add(img('images/img3.jpg'))
+//       .add(r2);
 
-    c2.add(img('images/img4.jpg'))
-      .add(img('images/img7.jpg'))
-      .add(r3);
+//     c2.add(img('images/img4.jpg'))
+//       .add(img('images/img7.jpg'))
+//       .add(r3);
       
 
-    drawStoryboard(r1, { 
-      width: 1300,
-      height: 400,
-      paddingLeft: 2,
-      paddingRight: 2,
-      paddingTop: 2,
-      paddingBottom: 2
-    });
-  }
+//     drawStoryboard(r1, { 
+//       width: 1300,
+//       height: 400,
+//       paddingLeft: 2,
+//       paddingRight: 2,
+//       paddingTop: 2,
+//       paddingBottom: 2
+//     }); 
+  // }
 
   </script>
 </body>

@@ -1,39 +1,41 @@
 const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
-const babel = require('gulp-babel');
-const uglify = require('gulp-uglify');
 const imageMin = require('gulp-imagemin');
+const webpackStream = require('webpack-stream');
+const config = require('./webpack.config');
 
-function css() {
-  return gulp.src('src/style.css')
+gulp.task('css', () => {
+  return gulp.src('src/css/style.css')
     .pipe(autoprefixer({
       cascade: false,
     }))
     .pipe(cleanCSS())
-    .pipe(gulp.dest('dist'));
-}
+    .pipe(gulp.dest('dist/css'));
+});
 
-function sctipt() {
-  return gulp.src('src/script.js')
-    .pipe(babel({
-      presets: ['@babel/env']
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist'));
-}
+gulp.task('script', () => {
+  return gulp.src('src/js/script.js')
+    .pipe(webpackStream(config))
+    .pipe(gulp.dest('dist/js'))
+});
 
-function html() {
+gulp.task('html', () => {
   return gulp.src('src/index.html')
-    .pipe(gulp.dest('dist'));
-}
+    .pipe(gulp.dest('dist'))
+});
 
-function images() {
+gulp.task('images', () => {
   return gulp.src('src/images/*')
     .pipe(imageMin())
     .pipe(gulp.dest('dist/images'));
-}
+});
 
-const build = gulp.series(html, css, images, sctipt);
+const watchScript = gulp.series('script', 'html', 'css');
+
+gulp.watch(['src/js/**/*.js', 'src/index.html', 'src/css/style.css'], watchScript);
+
+
+const build = gulp.series('css', 'script', 'html', 'images');
 
 exports.build = build;
